@@ -8,16 +8,16 @@ const userSchema = z.object({
     email: z.string().email(),
 });
 
-export async function POST(request: Request) {
+export const POST = async (request: Request) => {
     try {
         const body = await request.json();
         const { name, email } = userSchema.parse(body);
         const newUser = await db.insert(users).values({
             name,
-            email
+            email,
         }).returning();
-        return NextResponse.json(newUser, { status: 201 });
+        return NextResponse.json(newUser, { status: 201 })
     } catch (error) {
-        return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+        return NextResponse.json({ error: 'Invalid input' }, { status: 400 })
     }
 }
