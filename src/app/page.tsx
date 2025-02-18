@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export const Home = () => {
+const Home = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -50,3 +50,5 @@ export const Home = () => {
     </div>
   )
 }
+
+export default Home;
